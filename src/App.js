@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Categories from "./components/Categories";
+import Json from "./components/Json";
 import LoginPage from "./components/LoginPage";
 
 const App = () => {
@@ -8,6 +9,7 @@ const App = () => {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<Categories />} />
+        <Route path="/json" element={<Json />} />
       </Routes>
     </BrowserRouter>
   );
