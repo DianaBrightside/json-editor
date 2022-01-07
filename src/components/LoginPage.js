@@ -5,6 +5,7 @@ import { makeStyles } from "@mui/styles";
 import { theme } from "../theme";
 import GoogleIcon from "@mui/icons-material/Google";
 import { useGoogleAuth } from "../authentication/hooks";
+import { Route, Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -38,6 +39,7 @@ const LoginPage = () => {
             <Typography variant="h5">Sign in with Google</Typography>
           </Grid>
           <Grid item xs={12}>
+            <Link to="/">Categories</Link>
             <Button onClick={useGoogleAuth} variant="contained" color="primary">
               <GoogleIcon fontSize="large" />
             </Button>
