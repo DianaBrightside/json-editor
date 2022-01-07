@@ -8,7 +8,9 @@ import {
     useEffect,
     useState
 } from "react";
-import app from "./app";
+import {
+    app
+} from "./app";
 
 export const useGoogleAuth = () => {
     const provider = new GoogleAuthProvider();
