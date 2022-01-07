@@ -1,7 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
-import { getDatabase } from "firebase/database";
+import { ref, set, getDatabase, child, get } from "firebase/database";
+import { useState } from "react";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -24,3 +25,25 @@ export const app = initializeApp(firebaseConfig);
 
 // Get a reference to the database service
 export const database = getDatabase(app);
+
+export const setDatebaseValues = (path, value) => {
+  set(ref(database, path), value);
+};
+
+export const useGetFromDatebase = () => {
+  const [value, setValue] = useState(null);
+  const dbRef = ref(getDatabase());
+  const invoke = (path) =>
+    get(child(dbRef, path))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          setValue(snapshot.val());
+        } else {
+          console.log("No data available");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  return [invoke, value];
+};
