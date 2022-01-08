@@ -1,16 +1,20 @@
 import { JsonEditor as Editor } from "jsoneditor-react";
 import "jsoneditor-react/es/editor.min.css";
 import React, { useEffect } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import { setDatebaseValues, useGetFromDatebase } from "../authentication/app";
 
 const Json = () => {
+  let { category } = useParams();
+  const location = useLocation();
+  const dataPath = location.search.slice(1, location.length);
   const [invoke, initialJson] = useGetFromDatebase();
   useEffect(() => {
-    invoke("user");
-  }, [invoke]);
+    invoke(dataPath);
+  }, []);
   console.log(initialJson);
   const handleChange = (newJson) => {
-    setDatebaseValues("user", newJson);
+    setDatebaseValues(dataPath, newJson);
   };
 
   return initialJson && <Editor value={initialJson} onChange={handleChange} />;

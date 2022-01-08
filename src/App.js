@@ -9,7 +9,7 @@ const App = () => {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<Categories />} />
-        <Route path="/json" element={<Json />} />
+        <Route path="/json/:category" element={<Json />} />
       </Routes>
     </BrowserRouter>
   );
