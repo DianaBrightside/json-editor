@@ -11,8 +11,12 @@ import { app } from "./app";
 export const useGoogleAuth = () => {
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
-  signInWithPopup(auth, provider)
+  let navigate = useNavigate();
+  let location = useLocation();
+  let { from } = location.state || { from: { pathname: "/" } };
+  return () => signInWithPopup(auth, provider)
     .then((user) => {
+      navigate(from, { replace: true });
       console.log(user);
     })
     .catch((error) => {

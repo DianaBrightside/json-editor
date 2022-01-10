@@ -15,11 +15,7 @@ const App = () => {
           <Route
             exact
             path="/"
-            element={
-              <PrivateRoute>
-                <Categories />
-              </PrivateRoute>
-            }
+            element={<PrivateRoute component={Categories} />}
           />
         </Routes>
       </BrowserRouter>
