@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Button, Grid, ThemeProvider, Typography } from "@material-ui/core";
+import { Grid, ThemeProvider, Typography } from "@material-ui/core";
 import { makeStyles } from "@mui/styles";
 import { theme } from "../theme";
-import GoogleIcon from "@mui/icons-material/Google";
-import { useGoogleAuth } from "../authentication/hooks";
-import { Route, Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../authentication/authentication";
+import GoogleSignIn from "./GoogleSignIn";
 
 const useStyles = makeStyles({
   root: {
@@ -18,10 +18,21 @@ const useStyles = makeStyles({
 });
 
 const LoginPage = () => {
+  let history = useNavigate();
+  let location = useLocation();
+  let auth = useAuth();
+
+  let { from } = location.state || { from: { pathname: "/" } };
+  let login = () => {
+    auth.signin(() => {
+      history.replace(from);
+    });
+  };
+
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
-      <div className={classes.authWrapper}>
+      <div>
         <Grid
           className={classes.root}
           container
@@ -39,10 +50,10 @@ const LoginPage = () => {
             <Typography variant="h5">Sign in with Google</Typography>
           </Grid>
           <Grid item xs={12}>
-            <Link to="/">Categories</Link>
-            <Button onClick={useGoogleAuth} variant="contained" color="primary">
+            <GoogleSignIn />
+            {/* <Button onClick={useGoogleAuth} variant="contained" color="primary">
               <GoogleIcon fontSize="large" />
-            </Button>
+            </Button> */}
           </Grid>
         </Grid>
       </div>

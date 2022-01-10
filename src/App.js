@@ -5,6 +5,7 @@ import LoginPage from "./components/LoginPage";
 
 const App = () => {
   return (
+    // <ProvideAuth>
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
@@ -12,6 +13,7 @@ const App = () => {
         <Route path="/json/:category" element={<Json />} />
       </Routes>
     </BrowserRouter>
+    // </ProvideAuth>
   );
 };
 
