@@ -16,6 +16,7 @@ export const useGoogleAuth = () => {
   let navigate = useNavigate();
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
+<<<<<<< HEAD
   return () =>
     signInWithPopup(auth, provider)
       .then((user) => {
@@ -25,6 +26,16 @@ export const useGoogleAuth = () => {
       .catch((error) => {
         console.log(error);
       });
+=======
+  return () => signInWithPopup(auth, provider)
+    .then((user) => {
+      navigate(from, { replace: true });
+      console.log(user);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+>>>>>>> 95124fdd6587562e6fcb7a68989d6125a1c20dc2
 };
 
 export const useUserChangedState = () => {
