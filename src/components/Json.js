@@ -4,7 +4,7 @@ import { JsonEditor as Editor } from "jsoneditor-react";
 import "jsoneditor-react/es/editor.min.css";
 import { useLocation, useParams } from "react-router-dom";
 
-import { setDatebaseValues, useGetFromDatebase } from "../authentication/app";
+import { setDatebaseValues, useGetFromDatebase } from "../authorization/app";
 
 const Json = () => {
   let { category } = useParams();

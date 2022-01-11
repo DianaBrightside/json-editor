@@ -4,7 +4,7 @@ import LoginPage from "./components/LoginPage";
 import PrivateRoute from "./components/PrivateRoute";
 import Categories from "./components/Categories";
 import Json from "./components/Json";
-import { ProvideAuth } from "./authentication/authentication";
+import { ProvideAuth } from "./authorization/authentication";
 
 const App = () => {
   return (
