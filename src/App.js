@@ -1,9 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ProvideAuth } from "./authentication/authentication";
-import Categories from "./components/Categories";
-import Json from "./components/Json";
+
 import LoginPage from "./components/LoginPage";
 import PrivateRoute from "./components/PrivateRoute";
+import Categories from "./components/Categories";
+import Json from "./components/Json";
+import { ProvideAuth } from "./authentication/authentication";
 
 const App = () => {
   return (
@@ -15,11 +16,7 @@ const App = () => {
           <Route
             exact
             path="/"
-            element={
-              <PrivateRoute>
-                <Categories />
-              </PrivateRoute>
-            }
+            element={<PrivateRoute component={Categories} />}
           />
         </Routes>
       </BrowserRouter>

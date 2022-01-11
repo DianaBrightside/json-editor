@@ -1,5 +1,5 @@
-import { Box, Grid, Paper, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { Box, Grid, Paper, Typography } from "@material-ui/core";
 
 const Category = ({ category, dataPath }) => {
   return (
@@ -8,10 +8,14 @@ const Category = ({ category, dataPath }) => {
         <Paper elevation={3}>
           <Typography variant="h5">
             <Box sx={{ p: 2, textAlign: "center" }}>
-              <Link to={{
-                pathname: `/json/${category}`,
-                search: dataPath
-              }}>{category}</Link>
+              <Link
+                to={{
+                  pathname: `/json/${category}`,
+                  search: dataPath,
+                }}
+              >
+                {category}
+              </Link>
             </Box>
           </Typography>
         </Paper>
