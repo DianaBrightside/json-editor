@@ -8,7 +8,7 @@ export const theme = createTheme({
             "grid-xs-12": {
                 flexBasis: 0
             }
-        },
+        }
     },
 
 })

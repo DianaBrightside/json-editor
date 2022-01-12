@@ -1,6 +1,7 @@
 import React from "react";
 
 import Category from "./Category";
+import LogoutButton from "./LogoutButton";
 
 const Categories = () => {
   const categories = [
@@ -22,9 +23,16 @@ const Categories = () => {
     },
   ];
 
-  return categories.map(({ name, dataPath }) => (
-    <Category category={name} key={name} dataPath={dataPath} />
-  ));
+  return (
+    <>
+      <>
+        {categories.map(({ name, dataPath }) => (
+          <Category category={name} key={name} dataPath={dataPath} />
+        ))}
+      </>
+      <LogoutButton />
+    </>
+  );
 };
 
 export default Categories;

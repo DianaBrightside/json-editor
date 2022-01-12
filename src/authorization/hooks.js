@@ -6,6 +6,7 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
 
 import { app } from "./app";
@@ -16,14 +17,15 @@ export const useGoogleAuth = () => {
   let navigate = useNavigate();
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
-  return () => signInWithPopup(auth, provider)
-    .then((user) => {
-      navigate(from, { replace: true });
-      console.log(user);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  return () =>
+    signInWithPopup(auth, provider)
+      .then((user) => {
+        navigate(from, { replace: true });
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 };
 
 export const useUserChangedState = () => {
@@ -39,4 +41,16 @@ export const useUserChangedState = () => {
     });
   }, [auth]);
   return [user];
+};
+
+export const useSignOut = () => {
+  const auth = getAuth();
+  return () =>
+    signOut(auth)
+      .then(() => {
+        console.log("signed out");
+      })
+      .catch((error) => {
+        console.log("something happened: ", error);
+      });
 };
