@@ -5,6 +5,7 @@ import "jsoneditor-react/es/editor.min.css";
 import { useLocation, useParams } from "react-router-dom";
 
 import { setDatebaseValues, useGetFromDatebase } from "../authorization/app";
+import JsonInputs from "./JsonInputs";
 
 const Json = () => {
   let { category } = useParams();
@@ -19,6 +20,13 @@ const Json = () => {
     setDatebaseValues(dataPath, newJson);
   };
 
-  return initialJson && <Editor value={initialJson} onChange={handleChange} />;
+  return (
+    initialJson && (
+      <>
+        <JsonInputs />
+        <Editor value={initialJson} onChange={handleChange} />
+      </>
+    )
+  );
 };
 export default Json;
